@@ -1,0 +1,28 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read, write: if (request.auth != null && request.auth.uid == userId) || userId == 'demo-student-uid' || userId == 'demo-admin-uid';
+      
+      match /schedule/{courseId} {
+        allow read, write: if (request.auth != null && request.auth.uid == userId) || userId == 'demo-student-uid' || userId == 'demo-admin-uid';
+      }
+      
+      match /assignments/{assignmentId} {
+        allow read, write: if (request.auth != null && request.auth.uid == userId) || userId == 'demo-student-uid' || userId == 'demo-admin-uid';
+      }
+      
+      match /resume_reviews/{reviewId} {
+        allow read, write: if (request.auth != null && request.auth.uid == userId) || userId == 'demo-student-uid' || userId == 'demo-admin-uid';
+      }
+      
+      match /certificates/{certId} {
+        allow read, write: if (request.auth != null && request.auth.uid == userId) || userId == 'demo-student-uid' || userId == 'demo-admin-uid';
+      }
+    }
+
+    match /certificate_submissions/{subId} {
+      allow read, write: if true;
+    }
+  }
+}

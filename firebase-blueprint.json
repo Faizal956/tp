@@ -1,0 +1,108 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Stores user info, reputation scores, and skill points",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "reputation": {
+          "type": "object",
+          "description": "Reputation points for different skills (Technical, Business, Creative, Leadership, Communication)"
+        },
+        "badges": {
+          "type": "array",
+          "description": "List of awarded skill badges"
+        }
+      },
+      "required": ["uid", "email"]
+    },
+    "ScheduleCourse": {
+      "title": "Schedule Course",
+      "description": "A single course schedule item with attendance tracking",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "courseCode": { "type": "string" },
+        "courseName": { "type": "string" },
+        "days": { "type": "array" },
+        "time": { "type": "string" },
+        "instructor": { "type": "string" },
+        "room": { "type": "string" },
+        "attended": { "type": "number" },
+        "total": { "type": "number" }
+      },
+      "required": ["id", "courseName", "attended", "total"]
+    },
+    "Assignment": {
+      "title": "Assignment",
+      "description": "An assignment item with daily milestone checklist",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "steps": {
+          "type": "array",
+          "description": "Step-by-step daily milestones parsed by Gemini"
+        },
+        "completed": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "title", "dueDate", "steps"]
+    },
+    "ResumeReview": {
+      "title": "Resume Review",
+      "description": "Stores details of parsed resumes and matched internships",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fileName": { "type": "string" },
+        "critique": { "type": "string" },
+        "internships": { "type": "array" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "critique", "internships"]
+    },
+    "CertificateSubmission": {
+      "title": "Certificate Submission",
+      "description": "Stores details of submitted certificates and skill point updates",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fileName": { "type": "string" },
+        "skillCategory": { "type": "string" },
+        "skillPointsAwarded": { "type": "number" },
+        "certificateName": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "certificateName", "skillPointsAwarded"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Main user documents containing reputation and stats"
+    },
+    "/users/{userId}/schedule/{courseId}": {
+      "schema": "ScheduleCourse",
+      "description": "User's individual parsed timetable courses and attendance stats"
+    },
+    "/users/{userId}/assignments/{assignmentId}": {
+      "schema": "Assignment",
+      "description": "User's parsed assignments with milestone action plans"
+    },
+    "/users/{userId}/resume_reviews/{reviewId}": {
+      "schema": "ResumeReview",
+      "description": "User's uploaded resumes and Gemini feedback histories"
+    },
+    "/users/{userId}/certificates/{certId}": {
+      "schema": "CertificateSubmission",
+      "description": "Awarded certificates and associated skill points"
+    }
+  }
+}

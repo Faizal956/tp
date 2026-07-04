@@ -1,0 +1,6 @@
+{
+  "name": "AI Campus Assistant",
+  "description": "A responsive student portal combining an AI Attendance schedule parsing, an Assignment daily roadmap planner, Club matchmaking, Internship & Resume Reviewer, and an Achievement certificate wallet.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

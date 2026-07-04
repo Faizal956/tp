@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-indigo-50: #f4f5f0;
+  --color-indigo-100: #e6eae0;
+  --color-indigo-200: #ced5c7;
+  --color-indigo-300: #a7b69e;
+  --color-indigo-400: #819477;
+  --color-indigo-500: #697c60;
+  --color-indigo-600: #5a6a50; /* Primary Olive/Sage */
+  --color-indigo-700: #495642;
+  --color-indigo-800: #3c4636;
+  --color-indigo-900: #333a2e;
+  --color-indigo-950: #1a1e17;
+
+  --color-slate-50: #FAF9F6;  /* Natural Alabaster Base */
+  --color-slate-100: #f2efe6;
+  --color-slate-200: #e5e2d9; /* Sand border light mode */
+  --color-slate-300: #cac5b5;
+  --color-slate-400: #a59f8e;
+  --color-slate-500: #857e6c;
+  --color-slate-600: #6b6556;
+  --color-slate-700: #524d42;
+  --color-slate-800: #3d3d3c; /* Charcoal Text/Accents */
+  --color-slate-900: #272726;
+  --color-slate-950: #161715; /* Rich dark natural soil */
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+}
+
+body {
+  background-color: var(--color-slate-50);
+  color: var(--color-slate-800);
+}
+
+.dark body {
+  background-color: var(--color-slate-950);
+  color: var(--color-slate-100);
+}
